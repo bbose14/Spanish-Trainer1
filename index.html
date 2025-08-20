@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spanish Trainer — Expanded Decks (Embedded)</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Spanish Trainer <span class="badge">expanded</span></h1>
+      <div class="small">All data embedded — works offline and with GitHub Pages.</div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="flash">Flashcards</button>
+      <button class="tab" data-tab="verbs">Verb Drills</button>
+      <button class="tab" data-tab="review">Review & Stats</button>
+      <button class="tab" data-tab="settings">Settings</button>
+    </div>
+
+    <!-- Flashcards -->
+    <div id="flash" class="card">
+      <div class="grid">
+        <div>
+          <label>Deck</label><br/>
+          <select id="deckSelect"></select>
+        </div>
+        <div>
+          <label>Mode</label><br/>
+          <select id="modeSelect">
+            <option value="es-en">Spanish → English</option>
+            <option value="en-es">English → Spanish</option>
+          </select>
+        </div>
+        <div>
+          <label>Daily goal</label><br/>
+          <input id="dailyGoal" type="number" min="5" max="200" value="30">
+        </div>
+      </div>
+      <hr/>
+      <div id="flashContent">
+        <div id="cardPrompt" style="font-size:28px;margin-bottom:8px;"></div>
+        <input id="cardAnswer" placeholder="Type your answer…" autocomplete="off"/>
+        <div class="controls">
+          <button id="showBtn">Show</button>
+          <button class="good" id="correctBtn">I knew it</button>
+          <button class="bad" id="wrongBtn">I didn’t</button>
+          <button id="nextBtn">Next</button>
+        </div>
+        <div class="small" id="feedback"></div>
+      </div>
+    </div>
+
+    <!-- Verbs -->
+    <div id="verbs" class="card" style="display:none">
+      <div class="grid">
+        <div>
+          <label>Verb</label><br/>
+          <select id="verbSelect"></select>
+        </div>
+        <div>
+          <label>Tense</label><br/>
+          <select id="tenseSelect">
+            <option value="present">Presente</option>
+            <option value="preterite">Pretérito</option>
+            <option value="imperfect">Imperfecto</option>
+          </select>
+        </div>
+        <div>
+          <label>Practice mode</label><br/>
+          <select id="verbMode">
+            <option value="write">Write forms</option>
+            <option value="quiz">Multiple choice</option>
+            <option value="table">Show table</option>
+          </select>
+        </div>
+      </div>
+      <hr/>
+      <div id="verbArea"></div>
+    </div>
+
+    <!-- Review -->
+    <div id="review" class="card" style="display:none">
+      <div class="grid">
+        <div><strong>Streak:</strong> <span id="streak">0</span></div>
+        <div><strong>Cards studied today:</strong> <span id="studiedToday">0</span></div>
+        <div><strong>Total mastered:</strong> <span id="mastered">0</span></div>
+      </div>
+      <hr/>
+      <div id="reviewList"></div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="card" style="display:none">
+      <p><strong>Data</strong></p>
+      <div class="controls">
+        <button id="exportBtn">Export my progress</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none"/>
+        <button id="importBtn">Import progress</button>
+        <button id="resetBtn">Reset all</button>
+      </div>
+      <p class="small">Tip: On iPhone, use <span class="kbd">Share</span> → <em>Add to Home Screen</em> (from a website like GitHub Pages).</p>
+    </div>
+
+    <div class="footer">© 2025 Spanish Trainer — Expanded Edition.</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
